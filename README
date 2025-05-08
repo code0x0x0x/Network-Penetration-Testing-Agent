@@ -1,0 +1,104 @@
+# Advanced Cyber Operations Agent
+
+## Overview
+
+This advanced cybersecurity agent developed by TheNullGod & code0x0x0x is designed for automated network reconnaissance, vulnerability assessment, exploitation, and report generation. It integrates state-of-the-art AI using the Mixtral-8x7B model to perform tactical analysis and decision-making on network findings. The agent employs a combination of passive and active scanning techniques, stealth operations, and exploitation strategies.
+
+## Features
+
+- **Network Discovery:** Automatically detects local network ranges and conducts both passive and active scans using tools like Nmap.
+- **Stealth Operations:** Activates stealth mode including MAC address rotation, random hostname assignment, and iptables adjustments to minimize detection.
+- **AI-Powered Analysis:** Utilizes the local Mixtral-8x7B model for vulnerability prioritization, exploit chain suggestions, and operational security recommendations.
+- **Exploitation Framework Integration:** Interfaces with Metasploit and other frameworks for targeted exploitation and persistence establishment.
+- **Report Generation:** Produces intelligent reports in both STIX format and human-readable summaries.
+- **Data Exfiltration:** Implements secure data transmission techniques via OpenSSL and cURL.
+
+## Prerequisites
+
+- **Python:** Python 3.7 or later is required.
+- **Python Libraries:** Ensure the following Python packages are installed:
+  - cryptography
+  - stix2
+  - pandas
+  - nmap3
+  - pyattck
+  - reportlab
+  - metasploit
+  - vllm
+  - transformers
+  - logging (standard library)
+
+- **System Utilities:**
+  - `ip` command (for network interface detection)
+  - `macchanger` for MAC address rotation
+  - `iptables` for firewall rules
+  - `openssl`, `curl`, and `ssh` for secure operations and tunneling
+  - Other tools like `passivedns`, `nmap`, `mimikatz`, and `volatility` may be needed depending on the operational context.
+
+## Setup
+
+1. **Clone/Download the Repository:**
+   Ensure you have all the files including the agent located in the `NullGPT Mixtral` directory.
+
+2. **Install Python Dependencies:**
+   You can install required libraries using a requirements file if provided, or install them individually:
+   ```bash
+   pip install cryptography stix2 pandas nmap3 pyattck reportlab metasploit vllm transformers
+   ```
+
+3. **Model Setup:**
+   Place the Mixtral-8x7B model files in the directory `/app/models/mixtral` or update the model path in the script accordingly.
+
+## Environment Variables
+
+The agent relies on several environment variables for its configuration. Set these in your shell before running the agent:
+
+- `EXFILTRATION_SERVER`: URL for data exfiltration (default is `http://localhost/upload`).
+- `STEALTH_LEVEL`: Set to `stealth` to enable stealth mode operations.
+- `MSFRPC_PASS`: Password for the Metasploit RPC client.
+- `FIREWALL_IP`: IP address of the target firewall for bypass and scanning operations.
+
+Example (Linux/Mac):
+```bash
+export EXFILTRATION_SERVER="http://localhost/upload"
+export STEALTH_LEVEL="stealth"
+export MSFRPC_PASS="your_msfrpc_password"
+export FIREWALL_IP="192.168.1.1"
+```
+
+## Running the Agent
+
+Navigate to the your directory and run the agent:
+
+```bash
+python3 nework-agent.py
+```
+
+The agent will perform the following operations:
+
+1. **Stealth Activation:** Rotates MAC addresses, randomizes the hostname, and adjusts iptables rules if `STEALTH_LEVEL` is enabled.
+2. **Advanced Network Discovery:** Conducts both passive and active scanning, analyzing network ranges and vulnerabilities.
+3. **AI Analysis:** Uses the local AI model (Mixtral-8x7B) to generate tactical insights and exploit recommendations.
+4. **Exploitation Phase:** Attempts to exploit identified vulnerabilities and establish persistence.
+5. **Report Generation:** Creates reports including STIX formatted intelligence, human-readable summaries, and comprehensive security recommendations.
+
+## Logging and Reports
+
+- **Logging:** Operational logs are written to `agent.log`.
+- **Real-Time Reporting:** Updates on operations are available in `report.txt`.
+- **Generated Reports:**
+  - `human_report.txt`: Summary of compromised targets.
+  - `comprehensive_report.txt`: Detailed security recommendations.
+  - `report.stix`: STIX formatted intelligence report.
+
+## Disclaimer
+
+This tool is intended for educational purposes and authorized penetration testing only. Unauthorized use is illegal and unethical. Ensure you have proper consent and legal authorization before testing any networks or systems.
+
+## Contributing
+
+Contributions are welcome! Please submit pull requests or open issues to discuss potential enhancements and bug fixes.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details. 
